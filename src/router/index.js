@@ -1,12 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-const memberController = require('../controller/index')
+const memberController = require('../controller/memberControllers')
+const bookController = require('../controller/bookControllers')
 
+//endpoint member
+router.post('/member',memberController._addMember)
+router.post('/member/login',memberController._loginMember)
+router.get('/member',memberController._getDataMember)
 
-router.post('/user',memberController._addMember)
-router.post('/user/login',memberController._loginMember)
-
+//endpoint book
+router.post('/book',bookController._addBook)
 
 
 module.exports = router
