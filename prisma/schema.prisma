@@ -22,7 +22,7 @@ model member {
 model book {
   id        Int      @id @default(autoincrement())
   code String @db.VarChar(255)
-  title String @db.VarChar(255) @unique
+  title String @db.VarChar(255) 
   author String @db.VarChar(255)
   stock Int
   uuid_book String @db.Uuid @unique
@@ -30,6 +30,6 @@ model book {
 
 model borrowed {
   id        Int      @id @default(autoincrement())
-  uuid_member String @db.Uuid @unique
-  uuid_book String @db.Uuid @unique
+  uuid_member String @db.Uuid 
+  uuid_book String @db.Uuid 
 }
