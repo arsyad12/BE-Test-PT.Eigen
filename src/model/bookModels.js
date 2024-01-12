@@ -17,6 +17,15 @@ const bookModel = {
     }
   },
 
+  getData: async () => {
+    try {
+      const request = await prisma.book.findMany();
+      return request;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   addData: async (payload) => {
     try {
       const { code, title, author, stock, bookUuid } = payload;
