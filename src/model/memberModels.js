@@ -48,7 +48,8 @@ const memberModel = {
           name: name,
           email: email,
           password: hash,
-          uuid_member: userUuid
+          uuid_member: userUuid,
+          isMemberPenalize : false
         },
       });
       return request;
