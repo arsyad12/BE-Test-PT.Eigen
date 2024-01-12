@@ -8,6 +8,26 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 
 const bookControllers = {
+
+
+  _getBook: async(req,res)=>{
+    try {
+      const request = await bookModel.getData()
+      if (request) {
+        res.status(200).json({
+          status : true,
+          message : "get data success",
+          data: request
+        })
+      }
+    } catch (error) {
+      res.status(404).json({
+        status : false,
+        message : "data not found",
+      })
+    }
+  },
+
   _addBook: async (req, res) => {
     try {
       const { code, title, author, stock } = req.body;
