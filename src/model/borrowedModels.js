@@ -3,6 +3,17 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const borrowedModel = {
+
+  getData: async () => {
+    try {
+      const request = await prisma.borrowed.findMany();
+      return request;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+
   checkLimit: async (payload) => {
     try {
       const { uuid_member } = payload;
