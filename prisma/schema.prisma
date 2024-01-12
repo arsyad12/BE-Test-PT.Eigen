@@ -17,6 +17,7 @@ model member {
   email String @db.VarChar(255)
   password String @db.VarChar(255)
   uuid_member String @db.Uuid @unique
+  isMemberPenalize Boolean @default(false)
 }
 
 model book {
@@ -31,5 +32,7 @@ model book {
 model borrowed {
   id        Int      @id @default(autoincrement())
   uuid_member String @db.Uuid 
-  uuid_book String @db.Uuid 
+  uuid_book String @db.Uuid @unique
+  date_borrwoed DateTime @db.Date
+  date_return DateTime @db.Date
 }
