@@ -114,6 +114,25 @@ const borrowedControllers = {
       console.log(error.message);
     }
   },
+
+  _getBorrowed : async(req,res)=>{
+    try {
+      const request = await borrowedModel.getData()
+      if (request) {
+        res.status(200).json({
+          status : true,
+          message : "get data success",
+          data: request
+        })
+      }
+    } catch (error) {
+      res.status(404).json({
+        status : false,
+        message : "data not found",
+      })
+    }
+  },
+
 };
 
 module.exports = borrowedControllers;
