@@ -15,6 +15,7 @@ router.post('/book',bookController._addBook)
 
 //endpoint borrowed
 router.post('/borrowed',borrowedController._addBorrowed)
+router.delete('/borrowed',borrowedController._deleteBorrowed)
 
 
 module.exports = router
