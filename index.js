@@ -2,6 +2,11 @@ const express = require('express')
 const app = express()
 var bodyParser = require('body-parser')
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+
+
 require('dotenv').config()
 const port = process.env.PORT
 
@@ -19,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false}))
 const routerEndpoint = require('./src/router/index')
 
  app.use(routerEndpoint)
+ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 app.listen(port, () => {
