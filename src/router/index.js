@@ -22,6 +22,7 @@ router.get('/book/getAllData',bookController._getBook)
 //endpoint borrowed
 router.post('/borrowed',checkAuth,borrowedController._addBorrowed)
 router.get('/borrowed/getListBorrowed',borrowedController._getBorrowed)
+router.get('/borrowed/getBorrowedByMember',checkAuth,borrowedController._getBorrowedbyMember)
 router.delete('/borrowed/return',checkAuth,borrowedController._deleteBorrowed)
 
 
