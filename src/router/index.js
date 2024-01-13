@@ -5,6 +5,9 @@ const router = express.Router()
 const memberController = require('../controller/memberControllers')
 const bookController = require('../controller/bookControllers')
 const borrowedController = require('../controller/borrowedControllers')
+const checkAuth = require('../middleware/Auth')
+
+
 
 
 //endpoint member
@@ -17,9 +20,9 @@ router.post('/book',bookController._addBook)
 router.get('/book/getAllData',bookController._getBook)
 
 //endpoint borrowed
-router.post('/borrowed',borrowedController._addBorrowed)
+router.post('/borrowed',checkAuth,borrowedController._addBorrowed)
 router.get('/borrowed/getListBorrowed',borrowedController._getBorrowed)
-router.delete('/borrowed/return',borrowedController._deleteBorrowed)
+router.delete('/borrowed/return',checkAuth,borrowedController._deleteBorrowed)
 
 
 module.exports = router
