@@ -145,6 +145,27 @@ const borrowedControllers = {
     }
   },
 
+  _getBorrowedbyMember : async(req,res)=>{
+    try {
+      const token = req.headers.authorization.slice(7) 
+      const decoded = jwt.verify(token, process.env.APP_SECRET_TOKEN) 
+      const{uuid_member} = decoded
+
+      const request = await borrowedModel.getDataByMember({uuid_member})
+  
+        res.status(200).json({
+          status : true,
+          message : "get data success",
+          data: request
+        })
+
+    } catch (error) {
+      res.status(404).json({
+        status : false,
+        message : "data not found",
+      })
+    }
+  },
 };
 
 module.exports = borrowedControllers;
