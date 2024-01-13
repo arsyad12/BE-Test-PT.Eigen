@@ -1,0 +1,426 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API EIGEN LIBRARY",
+    "description": "Welcome to the Eigen Library API documentation! This API is designed to provide developers with easy access to a vast collection of member,book, and borrowed book",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "localhost"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "member",
+      "description": "This folder contains various API member endpoints. Get All Member, ADD Member, Login"
+    },
+    {
+      "name": "book",
+      "description": "This folder contains various API book endpoints. Get All Book, ADD Book"
+    },
+    {
+      "name": "borrowed",
+      "description": "This folder contains various API borrowed endpoints. Get All Borrowed, ADD Borrowed, Return Borrowed"
+    }
+  ],
+  "paths": {
+    "/member/register": {
+      "post": {
+        "tags": [
+          "member"
+        ],
+        "summary": "Create member",
+        "description": "This endpoint for create member.",
+        "operationId": "createmember",
+        "requestBody": {
+          "description": "Created member object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/member"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/member"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/member"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/member"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/member"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/member/login": {
+      "post": {
+        "tags": [
+          "member"
+        ],
+        "summary": "Creates token when your succesfully login",
+        "description": "after login you can use token for acces some feature",
+        "operationId": "createmembersWithListInput",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/login"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/login"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/member": {
+      "get": {
+        "tags": [
+          "member"
+        ],
+        "summary": "Logs member into the system",
+        "description": "",
+        "operationId": "getmember",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "data not found"
+          }
+        }
+      }
+    },
+    "/book": {
+      "post": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Create Book",
+        "description": "This endpoint for create book.",
+        "operationId": "createbook",
+        "requestBody": {
+          "description": "Created book object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addBook"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/addBook"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/addBook"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addBook"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/addBook"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/book/getAllData": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "get all book data",
+        "description": "",
+        "operationId": "getbook",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "data not found"
+          }
+        }
+      }
+    },
+    "/borrowed/getListBorrowed": {
+      "get": {
+        "tags": [
+          "borrowed"
+        ],
+        "summary": "get all borrowed data",
+        "description": "",
+        "operationId": "getlistborrowed",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "data not found"
+          }
+        }
+      }
+    },
+    "/borrowed": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "borrowed"
+        ],
+        "summary": "Create Borrowed",
+        "description": "This endpoint for create borrowed data.",
+        "operationId": "createborrowed",
+        "requestBody": {
+          "description": "Created borrowed object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/addBorrowed"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/addBorrowed"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/addBorrowed"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/addBorrowed"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/addBorrowed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/borrowed/return": {
+      "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["borrowed"],
+        "summary": "Return Borrowed",
+        "description": "This endpoint for return borrowed book.",
+        "operationId": "returnborrowed",
+        "requestBody": {
+          "description": "Created borrowed object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/returnBorrowed"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/returnBorrowed"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/returnBorrowed"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/returnBorrowed"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/returnBorrowed"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "member": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "MM-10"
+          },
+          "name": {
+            "type": "string",
+            "example": "John"
+          },
+          "email": {
+            "type": "string",
+            "example": "john@email.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          }
+        },
+        "xml": {
+          "name": "member"
+        }
+      },
+      "login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "lala@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "akucantik"
+          }
+        },
+        "xml": {
+          "name": "member"
+        }
+      },
+      "addBook": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "BNHA-1"
+          },
+          "title": {
+            "type": "string",
+            "example": "Bokuno Hero Academia"
+          },
+          "author": {
+            "type": "string",
+            "example": "Sensei K"
+          },
+          "stock": {
+            "type": "integer",
+            "example": 1
+          }
+        },
+        "xml": {
+          "name": "addBook"
+        }
+      },
+      "addBorrowed": {
+        "type": "object",
+        "properties": {
+          "uuid_book": {
+            "type": "string",
+            "example": "3a72d51d-bbd4-4dc4-8c9e-2a12470ac3ff"
+          }
+        },
+        "xml": {
+          "name": "addBorrowed"
+        }
+      },
+      "returnBorrowed": {
+        "type": "object",
+        "properties": {
+          "date_return": {
+            "type": "string",
+            "example": "2024-01-18"
+          },
+          "uuid_book": {
+            "type": "string",
+            "example": "3a72d51d-bbd4-4dc4-8c9e-2a12470ac3ff"
+          }
+        },
+        "xml": {
+          "name": "returnBorrowed"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
