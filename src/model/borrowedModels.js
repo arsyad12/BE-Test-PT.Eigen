@@ -14,6 +14,23 @@ const borrowedModel = {
   },
 
 
+  getDataByMember: async (payload) => {
+    try {
+      const {uuid_member} = payload
+      const request = await prisma.borrowed.findMany(
+        {
+          where:{
+            uuid_member : uuid_member
+          }
+        }
+      );
+      return request;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+
   checkLimit: async (payload) => {
     try {
       const { uuid_member } = payload;
