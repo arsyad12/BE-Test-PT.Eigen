@@ -28,7 +28,14 @@ create database library;
 
 5. Create and configure `.env` file in the root directory, example credentials are provided in [.env.example](./.env.example)
 
-6. run this command for running in development environment
+6. open file prisma schema, and migrate table with this command
+
+```sh
+npx prisma migrate dev --name init
+```
+7. import data to database who provided in [docs](./docs)
+
+8. run this command for running in development environment
 
 ```sh
 npm run dev
