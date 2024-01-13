@@ -6,7 +6,13 @@ const moment = require("moment");
 const borrowedControllers = {
   _addBorrowed: async (req, res) => {
     try {
-      const { uuid_member, uuid_book } = req.body;
+      
+      const token = req.headers.authorization.slice(7) 
+      const decoded = jwt.verify(token, process.env.APP_SECRET_TOKEN) 
+
+      const{uuid_member} = decoded
+
+      const { uuid_book } = req.body;
 
       const schema = Joi.object({
         uuid_member: Joi.string().guid({
@@ -70,7 +76,13 @@ const borrowedControllers = {
 
   _deleteBorrowed: async (req, res) => {
     try {
-      const { uuid_book, date_return, uuid_member } = req.body;
+
+      const token = req.headers.authorization.slice(7) 
+      const decoded = jwt.verify(token, process.env.APP_SECRET_TOKEN) 
+
+      const{uuid_member} = decoded
+
+      const { uuid_book, date_return} = req.body;
 
       const schema = Joi.object({
         uuid_member: Joi.string().guid({
