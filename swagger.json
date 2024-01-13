@@ -217,6 +217,29 @@
         }
       }
     },
+    "/borrowed/getBorrowedByMember": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "borrowed"
+        ],
+        "summary": "get borrowed data by member UUID",
+        "description": "",
+        "operationId": "getBorrowedByMember",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "data not found"
+          }
+        }
+      }
+    },
     "/borrowed": {
       "post": {
         "security": [
