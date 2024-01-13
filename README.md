@@ -41,6 +41,12 @@ npx prisma migrate dev --name init
 npm run dev
 ```
 
+9. for acces collection documentation you can acces in
+
+```sh
+http://localhost:3000/api-docs/
+```
+
 ## Built With
 
 These are the libraries and service used for building this backend API
